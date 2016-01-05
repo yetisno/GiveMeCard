@@ -15,7 +15,7 @@ public class Launcher {
 
 	public static void main(String... args) {
 		if (args.length != 3) {
-			System.out.println("java -jar givemecard-1.0.jar <[A]mericanExpress, [J]CB, [M]asterCard, [V]isa> <count> <with expire date?[Y/N]>");
+			System.out.println("java -jar givemecard-1.0.jar <[A]mericanExpress, [C]hina Unoin Pay, [J]CB, [M]asterCard, [V]isa> <count> <with expire date?[Y/N]>");
 			System.exit(1);
 		}
 		String type = args[0];
@@ -29,6 +29,9 @@ public class Launcher {
 			switch (type) {
 				case "A":
 					System.out.print(CardGenerator.AmericanExpress() + (withExpireDate ? "" : "\n"));
+					break;
+				case "C":
+					System.out.print(CardGenerator.ChinaUnionPay() + (withExpireDate ? "" : "\n"));
 					break;
 				case "J":
 					System.out.print(CardGenerator.JCB() + (withExpireDate ? "" : "\n"));

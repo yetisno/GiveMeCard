@@ -73,4 +73,18 @@ public class CardGenerator {
 			.append(getCheckCode(stringBuilder.toString()))
 			.toString();
 	}
+
+	public static String ChinaUnionPay() {
+		int length = 15;
+		int firstNumber = 62;
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < length - 3; i++) {
+			stringBuilder.append(random.nextInt(10));
+		}
+		return stringBuilder
+			.reverse()
+			.insert(0, String.valueOf(firstNumber))
+			.append(getCheckCode(stringBuilder.toString()))
+			.toString();
+	}
 }
