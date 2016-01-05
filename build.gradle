@@ -1,0 +1,53 @@
+group 'org.yetiz.utils'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+def manifestMainClass = 'Launcher'
+def manifestImplementationVersion = "${version}"
+def manifestBuiltDate = System.currentTimeMillis()
+def manifestClassPath = configurations.compile.collect { "libs${File.separator}${it.getName()}" }.join(' ')
+
+task export_library(type: Copy) {
+    into "$buildDir${File.separator}output${File.separator}libs"
+    from configurations.runtime
+}
+
+jar {
+    dependsOn export_library
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    destinationDir file("$buildDir${File.separator}output/")
+    from sourceSets.main.allSource
+}
+
+task manifastJar(type: Jar, dependsOn: sourcesJar) {
+    archiveName = "$baseName-$version.$extension"
+    destinationDir file("$buildDir${File.separator}output/")
+    from files(sourceSets.main.output.classesDir)
+    from files(sourceSets.main.output.resourcesDir)
+    manifest {
+        attributes 'Main-Class': manifestMainClass,
+                'Implementation-Version': manifestImplementationVersion,
+                'Built-Date': manifestBuiltDate,
+                "Class-Path": manifestClassPath
+    }
+}
+
+artifacts {
+    archives manifastJar
+}
