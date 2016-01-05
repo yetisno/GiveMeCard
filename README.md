@@ -1,5 +1,6 @@
 # Give Me Card
 ### Generate Card No
+![Travis CI](https://travis-ci.org/yetisno/GiveMeCard.svg?branch=master)
 
 ## Usage
 ```bash
