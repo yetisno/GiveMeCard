@@ -15,7 +15,7 @@ public class Launcher {
 
 	public static void main(String... args) {
 		if (args.length != 3) {
-			System.out.println("java -jar givemecard-1.0.jar <[A]mericanExpress, [C]hina Unoin Pay, [J]CB, [M]asterCard, [V]isa> <count> <with expire date?[Y/N]>");
+			System.out.println("java -jar givemecard-1.0.jar <[A]mericanExpress, [C]hina Union Pay, [J]CB, [M]asterCard, [V]isa> <count> <with expire date?[Y/N]>");
 			System.exit(1);
 		}
 		String type = args[0];

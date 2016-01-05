@@ -3,7 +3,7 @@
 
 ## Usage
 ```bash
-	java -jar givemecard-1.0.jar <[A]mericanExpress, [C]hina Unoin Pay, [J]CB, [M]asterCard, [V]isa> <count> <with expire date?[Y/N]>
+	java -jar givemecard-1.0.jar <[A]mericanExpress, [C]hina Union Pay, [J]CB, [M]asterCard, [V]isa> <count> <with expire date?[Y/N]>
 ```
 
 ## Example
